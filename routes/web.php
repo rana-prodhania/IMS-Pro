@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SupplierController;
 
@@ -35,8 +36,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/change/password', 'ChangePassword')->name('change.password');
         Route::post('/update/password', 'UpdatePassword')->name('update.password');
     });
-
+    // Supplier All Route
     Route::resource('/supplier', SupplierController::class);
+    // Customer All Route
+    Route::resource('/customer', CustomerController::class);
+
 });
 
 require __DIR__ . '/auth.php';
