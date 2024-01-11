@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/supplier', SupplierController::class);
     // Customer All Route
     Route::resource('/customer', CustomerController::class);
+    // Unit All Route
+    Route::resource('/unit', UnitController::class);
 
 });
 
