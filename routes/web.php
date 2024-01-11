@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/customer', CustomerController::class);
     // Unit All Route
     Route::resource('/unit', UnitController::class);
+    // Category All Route
+    Route::resource('/category', CategoryController::class);
 
 });
 
