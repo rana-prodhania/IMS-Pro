@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 
 /*
@@ -46,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/unit', UnitController::class);
     // Category All Route
     Route::resource('/category', CategoryController::class);
+    // Product All Route
+    Route::resource('/product', ProductController::class);
 
 });
 
