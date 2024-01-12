@@ -27,9 +27,7 @@ class PurchaseController extends Controller
     public function create()
     {
         $supplier = Supplier::all();
-        $unit = Unit::all();
-        $category = Category::all();
-        return view('admin.purchase.purchase_add', compact('supplier', 'unit', 'category'));
+        return view('admin.purchase.purchase_add', compact('supplier'));
     }
 
     /**
@@ -104,7 +102,7 @@ class PurchaseController extends Controller
             'message' => 'Status Approved Successfully',
             'alert-type' => 'success'
         );
-        return redirect()->route('purchase.pending')->with($notification);
+        return redirect()->route('purchase.index')->with($notification);
 
     }
 

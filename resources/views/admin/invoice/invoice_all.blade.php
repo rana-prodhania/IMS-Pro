@@ -1,8 +1,6 @@
 @extends('admin.layouts.app')
-@section('title', 'All Purchase')
+@section('title', 'All Inovice')
 @section('content')
-
-
   <div class="page-content">
     <div class="container-fluid">
 
@@ -10,7 +8,10 @@
       <div class="row">
         <div class="col-12">
           <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">All Purchase</h4>
+            <h4 class="mb-sm-0">All Inovice</h4>
+
+
+
           </div>
         </div>
       </div>
@@ -21,10 +22,10 @@
           <div class="card">
             <div class="card-body">
 
-              <a href="{{ route('purchase.create') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
-                style="float:right;"><i class="fas fa-plus-circle"> Add Purchase </i></a> <br> <br>
+              <a href="{{ route('invoice.create') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                style="float:right;"><i class="fas fa-plus-circle"> Add Inovice </i></a> <br> <br>
 
-              <h4 class="card-title">AllPurchase Data</h4>
+              <h4 class="card-title">All Inovice Data</h4>
 
 
               <table id="datatable" class="table table-bordered dt-responsive nowrap"
@@ -32,12 +33,11 @@
                 <thead>
                   <tr>
                     <th>Sl</th>
-                    <th>Purhase No</th>
+                    <th>Customer Name</th>
+                    <th>Invoice No </th>
                     <th>Date </th>
-                    <th>Supplier</th>
-                    <th>Category</th>
-                    <th>Qty</th>
-                    <th>Product Name</th>
+                    <th>Desctipion</th>
+                    <th>Amount</th>
                     <th>Status</th>
                     <th>Action</th>
 
@@ -49,12 +49,11 @@
                   @foreach ($allData as $key => $item)
                     <tr>
                       <td> {{ $key + 1 }} </td>
-                      <td> {{ $item->purchase_no }} </td>
+                      <td> {{ $item['payment']['customer']['name'] ?? 'N/A' }} </td>
+                      <td> #{{ $item->invoice_no }} </td>
                       <td> {{ date('d-m-Y', strtotime($item->date)) }} </td>
-                      <td> {{ $item['supplier']['name']??'N/A' }} </td>
-                      <td> {{ $item['category']['name'] }} </td>
-                      <td> {{ $item->buying_qty }} </td>
-                      <td> {{ $item['product']['name']??'N/A' }} </td>
+                      <td> {{ $item->description }} </td>
+                      <td> $ {{ $item['payment']['total_amount'] ?? 'N/A' }} </td>
 
                       <td>
                         @if ($item->status == '0')
@@ -66,9 +65,10 @@
 
                       <td>
                         @if ($item->status == '0')
-                          <a href="{{ route('purchase.approve', $item->id) }} " class="btn btn-info sm" title="Approved"
-                            id="ApproveBtn"> <i class="fas fa-check-circle"></i> </a>
-                          <a data-id="{{ $item->id }}" href="{{ route('purchase.destroy', $item->id) }}"
+                          <a href="{{ route('invoice.approve', $item->id) }}" class="btn btn-dark sm" title="Approved Data"> <i
+                              class="fas fa-check-circle"></i> </a>
+
+                          <a data-id="{{ $item->id }}" href="{{ route('invoice.destroy', $item->id) }}"
                             class="btn btn-danger sm" title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i>
                           </a>
 
@@ -94,8 +94,6 @@
 
     </div> <!-- container-fluid -->
   </div>
-
-
 @endsection
 @push('page-js')
   <script>

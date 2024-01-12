@@ -47,7 +47,7 @@
                     <tr>
                       <td> {{ $key + 1 }} </td>
                       <td> {{ $item->name }} </td>
-                      <td> {{ $item['supplier']['name'] }} </td>
+                      <td> {{ $item['supplier']['name']??'N/A' }} </td>
                       <td> {{ $item['unit']['name'] }} </td>
                       <td> {{ $item['category']['name'] }} </td>
                       <td>

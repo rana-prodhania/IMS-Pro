@@ -13,7 +13,7 @@
                 <div class="col-md-4">
                   <div class="md-3">
                     <label for="example-text-input" class="form-label">Date</label>
-                    <input class="form-control example-date-input" name="date" type="date" id="date">
+                    <input class="form-control example-date-input" name="date" value="{{ date('Y-m-d') }}" type="date" id="date">
                   </div>
                 </div>
                 <div class="col-md-4">
@@ -296,7 +296,7 @@
             category_id: category_id
           },
           success: function(data) {
-            var html = '<option value="">Select Category</option>';
+            var html = '<option value="">Select Product</option>';
             $.each(data, function(key, v) {
               html += '<option value=" ' + v.id + ' "> ' + v.name + '</option>';
             });

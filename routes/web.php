@@ -7,6 +7,7 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SupplierController;
@@ -54,11 +55,16 @@ Route::middleware('auth')->group(function () {
     // Purchase All Route
     Route::get('/purchase/approve/{id}', [PurchaseController::class, 'approve'])->name('purchase.approve');
     Route::resource('/purchase', PurchaseController::class,['except' => ['show,edit,update']]);
+    // Invoice All Route 
+    Route::get('/invoice/approve/{id}', [InvoiceController::class, 'approve'])->name('invoice.approve');
+    Route::post('/approval/store/{id}', [InvoiceController::class, 'approvalStore'])->name('approval.store');
+    Route::resource('/invoice', InvoiceController::class,['except' => ['show,edit,update']]);
 
     // Ajax All Route
     Route::controller(AjaxController::class)->group(function () {
         Route::get('/get-category', 'GetCategory')->name('get-category'); 
         Route::get('/get-product', 'GetProduct')->name('get-product'); 
+        Route::get('/check-product', 'GetStock')->name('check-product-stock');
     });
 });
 
