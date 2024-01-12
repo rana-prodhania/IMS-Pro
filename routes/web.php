@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/approval/store/{id}', [InvoiceController::class, 'approvalStore'])->name('approval.store');
     Route::get('/print/invoice/list', [InvoiceController::class, 'printInvoiceList'])->name('print.invoice.list');
     Route::get('/print/invoice/{id}', [InvoiceController::class, 'printInvoice'])->name('print.invoice');
+    Route::get('/daily/invoice/report', [InvoiceController::class,'dailyInvoiceReport'])->name('daily.invoice.report');
+    Route::get('/daily/invoice/pdf', [InvoiceController::class,'dailyInvoicePdf'])->name('daily.invoice.pdf');
     Route::resource('/invoice', InvoiceController::class,['except' => ['show,edit,update']]);
 
     // Ajax All Route
