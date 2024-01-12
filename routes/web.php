@@ -55,9 +55,11 @@ Route::middleware('auth')->group(function () {
     // Purchase All Route
     Route::get('/purchase/approve/{id}', [PurchaseController::class, 'approve'])->name('purchase.approve');
     Route::resource('/purchase', PurchaseController::class,['except' => ['show,edit,update']]);
-    // Invoice All Route 
+    // Invoice All Route
     Route::get('/invoice/approve/{id}', [InvoiceController::class, 'approve'])->name('invoice.approve');
     Route::post('/approval/store/{id}', [InvoiceController::class, 'approvalStore'])->name('approval.store');
+    Route::get('/print/invoice/list', [InvoiceController::class, 'printInvoiceList'])->name('print.invoice.list');
+    Route::get('/print/invoice/{id}', [InvoiceController::class, 'printInvoice'])->name('print.invoice');
     Route::resource('/invoice', InvoiceController::class,['except' => ['show,edit,update']]);
 
     // Ajax All Route

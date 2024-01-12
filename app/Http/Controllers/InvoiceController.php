@@ -189,4 +189,19 @@ class InvoiceController extends Controller
         );
         return redirect()->route('invoice.index')->with($notification);
     }
+
+    // Invoice Print List
+    public function printInvoiceList()
+    {
+
+        $allData = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '1')->get();
+        return view('admin.invoice.print_invoice_list', compact('allData'));
+    }
+
+    // Invoice Print
+    public function printInvoice($id)
+    {
+        $invoice = Invoice::with('invoice_details')->findOrFail($id);
+        return view('admin.pdf.invoice_pdf', compact('invoice'));
+    }
 }
