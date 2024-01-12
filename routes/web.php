@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SupplierController;
 
 /*
@@ -40,16 +42,25 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/password', 'UpdatePassword')->name('update.password');
     });
     // Supplier All Route
-    Route::resource('/supplier', SupplierController::class);
+    Route::resource('/supplier', SupplierController::class,['except' => ['show']]);
     // Customer All Route
-    Route::resource('/customer', CustomerController::class);
+    Route::resource('/customer', CustomerController::class,['except' => ['show']]);
     // Unit All Route
-    Route::resource('/unit', UnitController::class);
+    Route::resource('/unit', UnitController::class,['except' => ['show']]);
     // Category All Route
-    Route::resource('/category', CategoryController::class);
+    Route::resource('/category', CategoryController::class,['except' => ['show']]);
     // Product All Route
-    Route::resource('/product', ProductController::class);
+    Route::resource('/product', ProductController::class,['except' => ['show']]);
+    // Purchase All Route
+    Route::get('/purchase/approve/{id}', [PurchaseController::class, 'approve'])->name('purchase.approve');
+    Route::resource('/purchase', PurchaseController::class,['except' => ['show,edit,update']]);
 
+    // Ajax All Route
+    Route::controller(AjaxController::class)->group(function () {
+        Route::get('/get-category', 'GetCategory')->name('get-category'); 
+        Route::get('/get-product', 'GetProduct')->name('get-product'); 
+    });
 });
+
 
 require __DIR__ . '/auth.php';
