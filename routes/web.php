@@ -35,6 +35,7 @@ Route::get('/dashboard', function () {
 
 // Admin All Route
 Route::middleware('auth')->group(function () {
+
     Route::controller(AdminController::class)->group(function () {
         Route::get('/admin/logout', 'destroy')->name('admin.logout');
         Route::get('/admin/profile', 'Profile')->name('admin.profile');
@@ -43,27 +44,40 @@ Route::middleware('auth')->group(function () {
         Route::get('/change/password', 'ChangePassword')->name('change.password');
         Route::post('/update/password', 'UpdatePassword')->name('update.password');
     });
+
     // Supplier All Route
     Route::resource('/supplier', SupplierController::class, ['except' => ['show']]);
+
     // Customer All Route
     Route::resource('/customer', CustomerController::class, ['except' => ['show']]);
+
     // Unit All Route
     Route::resource('/unit', UnitController::class, ['except' => ['show']]);
+
     // Category All Route
     Route::resource('/category', CategoryController::class, ['except' => ['show']]);
+
     // Product All Route
     Route::resource('/product', ProductController::class, ['except' => ['show']]);
+
     // Purchase All Route
-    Route::get('/purchase/approve/{id}', [PurchaseController::class, 'approve'])->name('purchase.approve');
-    Route::resource('/purchase', PurchaseController::class, ['except' => ['show,edit,update']]);
+    Route::controller(PurchaseController::class)->group(function () {
+        Route::get('/purchase/approve/{id}', 'approve')->name('purchase.approve');
+        Route::get('/daily/purchase/report', 'dailyPurchaseReport')->name('daily.purchase.report');
+        Route::get('/daily/purchase/pdf', 'dailyPurchasePdf')->name('daily.purchase.pdf');
+        Route::resource('/purchase', PurchaseController::class, ['except' => ['show,edit,update']]);
+    });
+
     // Invoice All Route
-    Route::get('/invoice/approve/{id}', [InvoiceController::class, 'approve'])->name('invoice.approve');
-    Route::post('/approval/store/{id}', [InvoiceController::class, 'approvalStore'])->name('approval.store');
-    Route::get('/print/invoice/list', [InvoiceController::class, 'printInvoiceList'])->name('print.invoice.list');
-    Route::get('/print/invoice/{id}', [InvoiceController::class, 'printInvoice'])->name('print.invoice');
-    Route::get('/daily/invoice/report', [InvoiceController::class, 'dailyInvoiceReport'])->name('daily.invoice.report');
-    Route::get('/daily/invoice/pdf', [InvoiceController::class, 'dailyInvoicePdf'])->name('daily.invoice.pdf');
-    Route::resource('/invoice', InvoiceController::class, ['except' => ['show,edit,update']]);
+    Route::controller(InvoiceController::class)->group(function () {
+        Route::get('/invoice/approve/{id}',  'approve')->name('invoice.approve');
+        Route::post('/approval/store/{id}',  'approvalStore')->name('approval.store');
+        Route::get('/print/invoice/list', 'printInvoiceList')->name('print.invoice.list');
+        Route::get('/print/invoice/{id}', 'printInvoice')->name('print.invoice');
+        Route::get('/daily/invoice/report', 'dailyInvoiceReport')->name('daily.invoice.report');
+        Route::get('/daily/invoice/pdf', 'dailyInvoicePdf')->name('daily.invoice.pdf');
+        Route::resource('/invoice', InvoiceController::class, ['except' => ['show,edit,update']]);
+    });
 
     // Stock All Route 
     Route::controller(StockController::class)->group(function () {

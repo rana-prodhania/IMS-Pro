@@ -106,5 +106,24 @@ class PurchaseController extends Controller
 
     }
 
+    // daily purchase report list
+    public function dailyPurchaseReport(){
+        return view('admin.purchase.daily_purchase_report');
+    }// End Method 
+
+    // daily purchase report
+    public function dailyPurchasePdf(Request $request){
+
+        $start_date = date('Y-m-d',strtotime($request->start_date));
+        $end_date = date('Y-m-d',strtotime($request->end_date));
+        $allData = Purchase::whereBetween('date',[$start_date,$end_date])->where('status','1')->get();
+
+
+        $start_date = date('Y-m-d',strtotime($request->start_date));
+        $end_date = date('Y-m-d',strtotime($request->end_date));
+        return view('admin.pdf.daily_purchase_report_pdf',compact('allData','start_date','end_date'));
+
+    }// End Method 
+
 
 }
