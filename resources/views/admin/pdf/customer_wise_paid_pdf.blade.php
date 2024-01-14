@@ -109,7 +109,7 @@
                               <td class="no-line text-center">
                                 <strong>Grand Due Amount</strong>
                               </td>
-                              <td class="no-line text-end">
+                              <td class="no-line text-center">
                                 <h4 class="m-0">${{ $total_due }}</h4>
                               </td>
                             </tr>
@@ -123,7 +123,7 @@
                       <i>Printing Time : {{ $date->format('F j, Y, g:i a') }}</i>
 
                       <div class="d-print-none">
-                        <div class="float-end pe-5">
+                        <div class="float-end pe-5 me-4">
                           <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i
                               class="fa fa-print"></i></a>
                         </div>
