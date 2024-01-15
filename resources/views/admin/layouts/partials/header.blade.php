@@ -40,10 +40,10 @@
             <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="ri-user-line align-middle me-1"></i>
               Profile</a>
             <a class="dropdown-item" href="{{ route('change.password') }}"><i
-                class="ri-wallet-2-line align-middle me-1"></i> Change Password</a>
-            <a class="dropdown-item d-block" href="#"><i
+                class="ri-lock-password-line align-middle me-1"></i> Change Password</a>
+            {{-- <a class="dropdown-item d-block" href="#"><i
                 class="ri-settings-2-line align-middle me-1"></i> Settings</a>
-            <div class="dropdown-divider"></div>
+            <div class="dropdown-divider"></div> --}}
 
             <a class="dropdown-item text-danger" href="{{ route('admin.logout') }}"><i
                 class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</a>
