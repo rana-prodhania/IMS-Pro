@@ -13,15 +13,15 @@
 
          <li>
            <a href="{{ url('/dashboard') }}" class="waves-effect">
-             <i class="ri-home-fill"></i>
+            <i class="ri-home-7-line"></i>
              <span>Dashboard</span>
            </a>
          </li>
 
          <li>
            <a href="javascript: void(0);" class="has-arrow waves-effect">
-             <i class="ri-hotel-fill"></i>
-             <span>Manage Suppliers</span>
+            <i class="ri-store-2-line"></i>
+             <span>Suppliers</span>
            </a>
            <ul class="sub-menu" aria-expanded="false">
              <li><a href="{{ route('supplier.index') }}">All Supplier</a></li>
@@ -31,8 +31,8 @@
 
          <li>
            <a href="javascript: void(0);" class="has-arrow waves-effect">
-             <i class="ri-shield-user-fill"></i>
-             <span>Manage Customers</span>
+            <i class="ri-folder-user-line"></i>
+             <span>Customers</span>
            </a>
            <ul class="sub-menu" aria-expanded="false">
              <li><a href="{{ route('customer.index') }}">All Customers</a></li>
@@ -45,8 +45,8 @@
 
          <li>
            <a href="javascript: void(0);" class="has-arrow waves-effect">
-             <i class="ri-delete-back-fill"></i>
-             <span>Manage Units</span>
+             <i class="ri-delete-back-2-line"></i>
+             <span>Units</span>
            </a>
            <ul class="sub-menu" aria-expanded="false">
              <li><a href="{{ route('unit.index') }}">All Unit</a></li>
@@ -56,7 +56,7 @@
 
          <li>
            <a href="javascript: void(0);" class="has-arrow waves-effect">
-             <i class="ri-apps-2-fill"></i>
+             <i class="ri-apps-2-line"></i>
              <span>Manage Category</span>
            </a>
            <ul class="sub-menu" aria-expanded="false">
@@ -67,8 +67,8 @@
 
          <li>
            <a href="javascript: void(0);" class="has-arrow waves-effect">
-             <i class="ri-reddit-fill"></i>
-             <span>Manage Product</span>
+             <i class="ri-shopping-bag-2-line"></i>
+             <span>Product</span>
            </a>
            <ul class="sub-menu" aria-expanded="false">
              <li><a href="{{ route('product.index') }}">All Product</a></li>
@@ -78,8 +78,8 @@
 
          <li>
            <a href="javascript: void(0);" class="has-arrow waves-effect">
-             <i class="ri-oil-fill"></i>
-             <span>Manage Purchase</span>
+             <i class="ri-shopping-basket-line"></i>
+             <span>Purchase</span>
            </a>
            <ul class="sub-menu" aria-expanded="false">
              <li><a href="{{ route('purchase.index') }}">All Purchase</a></li>
@@ -89,8 +89,8 @@
 
          <li>
            <a href="javascript: void(0);" class="has-arrow waves-effect">
-             <i class="ri-compass-2-fill"></i>
-             <span>Manage Invoice</span>
+             <i class="ri-file-list-3-line"></i>
+             <span>Invoice / Sales</span>
            </a>
            <ul class="sub-menu" aria-expanded="false">
              <li><a href="{{ route('invoice.index') }}">All Invoice</a></li>
@@ -103,8 +103,8 @@
 
          <li>
            <a href="javascript: void(0);" class="has-arrow waves-effect">
-             <i class="ri-gift-fill"></i>
-             <span>Manage Stock</span>
+            <i class="ri-pie-chart-line"></i>
+             <span>Stock</span>
            </a>
            <ul class="sub-menu" aria-expanded="false">
              <li><a href="{{ route('stock.report') }}">Stock Report</a></li>
