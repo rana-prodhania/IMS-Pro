@@ -9,5 +9,4 @@
 - PHP, Laravel
 - MySQL
 - HTML, CSS, JavaScript, jQuery, and Ajax
-- Bootstrap for styling
-- Toastr & SweetAlert2
+- Bootstrap
